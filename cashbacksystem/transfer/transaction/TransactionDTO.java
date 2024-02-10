@@ -2,6 +2,8 @@ package cashbacksystem.transfer.transaction;
 
 import cashbacksystem.transfer.card.CardDTO;
 import cashbacksystem.transfer.category.CategoryDTO;
+import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
@@ -12,12 +14,20 @@ import java.time.ZonedDateTime;
  * @param time     - время
  * @param card     - карта
  * @param category - категория
- * @param cost     - сумма
+ * @param sum      - сумма
  */
+@Builder(setterPrefix = "with")
 public record TransactionDTO(
+    @NotNull
     ZonedDateTime time,
+
+    @NotNull
     CardDTO card,
+
+    @NotNull
     CategoryDTO category,
-    BigDecimal cost
+
+    @NotNull
+    BigDecimal sum
 ) {
 }
