@@ -14,7 +14,7 @@ import java.time.ZonedDateTime;
  * @param time     - время
  * @param card     - карта
  * @param category - категория
- * @param sum      - сумма
+ * @param amount   - сумма
  */
 @Builder(setterPrefix = "with")
 public record TransactionDTO(
@@ -28,6 +28,6 @@ public record TransactionDTO(
     CategoryDTO category,
 
     @NotNull
-    BigDecimal sum
+    BigDecimal amount
 ) {
 }
