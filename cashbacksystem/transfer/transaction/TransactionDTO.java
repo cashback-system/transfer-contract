@@ -3,31 +3,47 @@ package cashbacksystem.transfer.transaction;
 import cashbacksystem.transfer.card.CardDTO;
 import cashbacksystem.transfer.category.CategoryDTO;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 /**
  * DTO-модель транзакции.
- *
- * @param time     - время
- * @param card     - карта
- * @param category - категория
- * @param amount   - сумма
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder(setterPrefix = "with")
-public record TransactionDTO(
+public class TransactionDTO {
     @NotNull
-    ZonedDateTime time,
+    private UUID id;
 
+    /**
+     * Время.
+     */
     @NotNull
-    CardDTO card,
+    private ZonedDateTime time;
 
+    /**
+     * Карта.
+     */
     @NotNull
-    CategoryDTO category,
+    private CardDTO card;
 
+    /**
+     * Категория.
+     */
     @NotNull
-    BigDecimal amount
-) {
+    private CategoryDTO category;
+
+    /**
+     * Сумма.
+     */
+    @NotNull
+    private BigDecimal amount;
 }
